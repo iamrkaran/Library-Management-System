@@ -6,16 +6,20 @@ import Home from "./components/Home.jsx";
 import AdminDashbord from "./components/AdminDashbord";
 import Addbook from "./components/Addbook";
 import Updatebook from "./components/Updatebook";
+import Issuedbooks from "./components/issuedbooks";
+import AddStudentdata from "./components/Addnewstudent";
 
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/dashboard" element={<Home />} />
       <Route path="/dashboard/addbook" element={<Addbook />} />
+      <Route path="/rentedbooks" element={<Issuedbooks />} />
       <Route path="/updatebook" element={<Updatebook />} />
+      <Route path="/dashboard/addnewstudent" element={<AddStudentdata />} />
     </Routes>
   );
 }

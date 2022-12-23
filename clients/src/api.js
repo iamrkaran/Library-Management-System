@@ -14,7 +14,6 @@ export const getBooks = () => {
   return axios.get(`${baseUrl}/books`);
 };
 
-
 // const { title, authorId, publisherId, isbn, publication_year } = fromdata;
 export const createBook = (
   title,
@@ -48,14 +47,39 @@ export const updateBook = (
     isbn,
     title,
     author_id,
-    publisher_id, 
+    publisher_id,
     publication_year,
     availability,
   });
 };
 
-
-
 export const deleteBook = (isbn) => {
   return axios.delete(`${baseUrl}/deletebook/${isbn}`);
-}
+};
+
+export const rentedBooks = () => {
+  return axios.get(`${baseUrl}/rentedbooks`);
+};
+
+export const searchNewBooks = (id) => {
+  const endpoint = `${baseUrl}/books/${id}`;
+  return axios.get(endpoint);
+};
+
+
+
+export const addNewStudent = (
+  student_id,
+  name,
+  email,
+  enrollment_status,
+  library_card_number
+) => {
+  return axios.post(`${baseUrl}/dashboard/addnewstudent`, {
+    student_id,
+    name,
+    email,
+    enrollment_status,
+    library_card_number,
+  });
+};

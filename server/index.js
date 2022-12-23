@@ -75,14 +75,26 @@ app.get("/books", (req, res) => {
 });
 
 app.get("/books/:id", (req, res) => {
-  const id = req.params.id;
-  pool.query("SELECT * FROM books WHERE id = ?", [id], (error, results) => {
+  const book_id = req.params.id;
+  pool.query("SELECT * FROM books WHERE book_id = ?", [book_id], (error, results) => {
     if (error) {
       throw error;
     }
     res.send(results);
   });
 });
+
+app.get("/books/:title", (req, res) => {
+  const title = req.params.title;
+  pool.query("SELECT * FROM books WHERE title LIKE ?", ['%' + title + '%'], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.send(results);
+  });
+});
+
+
 
 app.post("/addbooks", (req, res) => {
   const {
@@ -137,6 +149,53 @@ app.delete("/deletebook/:isbn", (req, res) => {
     }
   });
 });
+
+app.get("/student", (req, res) => {
+  pool.query("SELECT * FROM student", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.send(results);
+  });
+});
+
+app.get("/rentedbooks", (req, res) => {
+  pool.query("SELECT * FROM borrowed_books", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.send(results);
+  });
+});
+// INSERT INTO `student`(`student_id`, `name`, `email`, `enrollment_status`, `library_card_number`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])
+app.post("/dashboard/addnewstudent", (req, res) => {
+  const {
+    student_id,
+    name,
+    email,
+    enrollment_status,
+    library_card_number,
+  } = req.body;
+  pool.query(
+    "INSERT INTO student (student_id,name, email, enrollment_status, library_card_number) VALUES (?)",
+    [student_id,name, email, enrollment_status, library_card_number],
+    (error, results) => {
+      if (error) {
+        // Log the error
+        console.error(error);
+        // Send a response with a 500 status code to indicate an internal server error
+        res.status(500).send("Failed to add student");
+      } else {
+        // Send a response with a 201 status code to indicate that the student was successfully added
+        res.status(201).send(`Student added with ID: ${results.student_id}`);
+      }
+    }
+  );
+});
+
+
+
+
 
 
 
