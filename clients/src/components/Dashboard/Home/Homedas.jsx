@@ -28,6 +28,7 @@ const Home = () => {
     book_id: "",
   });
 
+  console.log("formdata" + formdata);
   useEffect(() => {
     fetch("http://localhost:3000/books")
       .then((res) => res.json())
@@ -37,43 +38,32 @@ const Home = () => {
       });
   }, []);
 
-  const onInputChange = (e) => {
-    setFormData({ ...formdata, [e.target.name]: e.target.value });
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const user_id = formdata.user_id;
-    const book_id = formdata.book_id; 
+    const book_id = formdata.book_id;
 
-      const dateformate = new Date();
-      const formattedBorrowDate = dateformate.toISOString().slice(0, 10);
-      
-      const formatedDueDate = new Date();
-      formatedDueDate.setMonth(formatedDueDate.getMonth() + 3);
-      const formattedDueDate = formatedDueDate.toISOString().slice(0, 10);
-      
-      const borrow_date = formattedBorrowDate;
-      const due_date = formattedDueDate;
-    
-    const return_date = "0000-00-00";
-    const data = {
-      user_id,
-      book_id,
-      borrow_date,
-      due_date,
-      return_date
-    };
-    IssueBook(data)
-    .then((response) => {
-      console.log(response.data);
-      alert("Book Issued Successfully");
+    const dateformate = new Date();
+    const formattedBorrowDate = dateformate.toISOString().slice(0, 10);
+
+    const formatedDueDate = new Date();
+    formatedDueDate.setMonth(formatedDueDate.getMonth() + 3);
+    const formattedDueDate = formatedDueDate.toISOString().slice(0, 10);
+
+    const borrow_date = formattedBorrowDate;
+    const due_date = formattedDueDate;
+    const return_date = null; 
+
+    IssueBook(user_id, book_id, borrow_date, due_date, return_date)
+    .then((res) => {
+      console.log(res);
       setShowModal(false);
     })
-    .catch((error) => {
-      console.error(error);
+    .catch((err) => {
+      console.log(err);
     });
-  };
+};
 
   return (
     <div className="home">
@@ -83,9 +73,7 @@ const Home = () => {
             <div className="col-md-4" key={item.book_id}>
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title" >
-                    Book id :-- {item.book_id}
-                  </h5>
+                  <h5 className="card-title">Book id :-- {item.book_id}</h5>
                   <h5 className="card-title">{item.title}</h5>
                   <p className="card-text">{item.author}</p>
                   <p className="card-text">{item.isbn}</p>
@@ -111,7 +99,7 @@ const Home = () => {
                       <Button
                         variant="success"
                         onClick={() => {
-                          setFormData({ book_id: item.book_id });
+                          setFormData({ book_id: item.book_id, user_id: "" });
                           setShowModal(true);
                         }}
                       >
@@ -138,7 +126,9 @@ const Home = () => {
                 name="user_id"
                 id="user_id"
                 value={formdata.user_id}
-                onChange={onInputChange}
+                onChange={(event) =>
+                  setFormData({ ...formdata, user_id: event.target.value })
+                }
               />
             </FormGroup>
             <FormGroup>
@@ -148,7 +138,9 @@ const Home = () => {
                 name="book_id"
                 id="book_id"
                 value={formdata.book_id}
-                onChange={onInputChange}
+                onChange={(event) =>
+                  setFormData({ ...formdata, book_id: event.target.value })
+                }
               />
             </FormGroup>
           </Form>
