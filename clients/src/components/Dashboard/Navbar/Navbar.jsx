@@ -78,7 +78,7 @@ function CollapsibleExample() {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand href="#home">KNIT SULTANPUR</Navbar.Brand>
+        <Navbar.Brand href="/dashboard">KNIT SULTANPUR</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
