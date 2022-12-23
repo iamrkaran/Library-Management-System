@@ -19,72 +19,97 @@ const AddBookForm = () => {
         availability: "0",
     });
 
-    const validateTitle = (title) => {
-      if (!title) {
-        return false;
-      }
-      return true;
-    };
-    
-      
-      const validateauthor_id = (author_id) => {
-        if (!author_id) {
-          return false;
-        }
-        return true;
-      };
-      
-      const validatepublisher_id = (publisher_id) => {
-        if (!publisher_id) {
-          return false;
-        }
-        return true;
-      };
-      
-      const validateIsbn = (isbn) => {
-        if (!isbn) {
-          return false;
-        }
-        return true;
-      };
-      
-      const validatepublication_year = (publication_year) => {
-        if (!publication_year) {
-          return false;
-        }
-        return true;
-      };
-      
-    const handleValidation = (event) => {
-        event.preventDefault();
-        const { title, author_id, publisher_id, isbn, publication_year } = formdata;
-        const titleValid = validateTitle(title);
-        const author_idValid = validateauthor_id(author_id);
-        const publisher_idValid = validatepublisher_id(publisher_id);
-        const isbnValid = validateIsbn(isbn);
-        const publication_yearValid = validatepublication_year(publication_year);
-        if (
-            titleValid &&
-            author_idValid &&
-            publisher_idValid &&
-            isbnValid &&
-            publication_yearValid
-            ) {
-            console.log("Form is valid");
-            handleSubmit();
-            }
-            else {
-            console.log("Form is invalid");
-            }
-       
-    };
+    const regex = /^[0-9\b]+$/;
 
-   const [success, setSuccess] = useState(false);
-  if (success) {
-    setTimeout(() => {
-      setSuccess(false);
-    }, 3000);
+const validateTitle = (title) => {
+  if (!title) {
+    setError("Title is required");
+    return false;
   }
+  return true;
+};
+
+const validateauthor_id = (author_id) => {
+  if (!author_id ) {
+    setError("Author id is required");
+    return false;
+  } else if (!regex.test(author_id)) {
+    setError("Author id is not valid");
+    return false;
+  }
+  return true;
+};
+
+const validatepublisher_id = (publisher_id) => {
+  if (!publisher_id) {
+    setError("Publisher id is required");
+    return false;
+  } else if (!regex.test(publisher_id)) {
+    setError("Publisher id is not valid");
+    return false;
+  }
+  return true;
+};
+
+const validateIsbn = (isbn) => {
+  if (!isbn) {
+    setError("ISBN is required");
+    return false;
+  } else if (!regex.test(isbn)) {
+    setError("ISBN is not valid");
+    return false;
+  }
+  return true;
+};
+
+const validatepublication_year = (publication_year) => {
+  if (!publication_year) {
+    setError("Publication year is required");
+    return false;
+  } else if (!regex.test(publication_year)) {
+    setError("Publication year is not valid");
+    return false;
+  }
+  return true;
+};
+
+const handleValidation = (event) => {
+  event.preventDefault();
+  const { title, author_id, publisher_id, isbn, publication_year } = formdata;
+  const titleValid = validateTitle(title);
+  const author_idValid = validateauthor_id(author_id);
+  const publisher_idValid = validatepublisher_id(publisher_id);
+  const isbnValid = validateIsbn(isbn);
+  const publication_yearValid = validatepublication_year(publication_year);
+  if (
+    titleValid &&
+    author_idValid &&
+    publisher_idValid &&
+    isbnValid &&
+    publication_yearValid
+  ) {
+    console.log("Form is valid");
+    handleSubmit();
+  } else {
+    console.log("Form is invalid");
+    setError("Form is invalid");
+  }
+};
+
+const [success, setSuccess] = useState(false);
+const [error, setError] = useState("");
+if (success) {
+  setTimeout(() => {
+    setSuccess(false);
+  }, 3000);
+}
+
+if (error) {
+  setTimeout(() => {
+    setError("");
+  }, 3000);
+}
+
 
   const handleSubmit = () => {
    
@@ -194,7 +219,14 @@ const AddBookForm = () => {
         </Alert>
       )}
     </div>
-   
+    <div>
+      {error && (
+        <Alert variant="danger" className="mt-3">
+          {error}
+        </Alert>
+      )}
+    </div>
+        
       </div>
   );
 };

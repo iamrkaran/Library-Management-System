@@ -6,7 +6,9 @@ import {
   Button,
   Form,
   Modal,
-
+  Row,
+  Col,
+  
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -16,6 +18,7 @@ import SearchComponent from "../../SearchComponent";
 import { searchNewBooks} from "../../../api";
 
 import "./navbar.css";
+import { useEffect } from "react";
 
 function CollapsibleExample() {
   const dispatch = useDispatch();
@@ -25,15 +28,40 @@ function CollapsibleExample() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState("");
+  const regex = /^[0-9\b]+$/;
 
+  const validatesearch = (id) => {
+    if (!id) {
+      setError("Search is required");
+      return false;
+    } else if (!regex.test(id)) {
+      setError("Search is not valid");
+      return false;
+    }
+    return true;
+  };
   const handleSubmit = event => {
     event.preventDefault();
-    searchNewBooks(searchTerm).then(results => {
-        setResults(results.data);
-        setShowModal(true);
-        }
-    );
+    const isValid = validatesearch(searchTerm);
+
+    if (!isValid) {
+      alert("Please Enter a valid search id");
+      return;
+      setError("Please Enter a valid search id");
+     
+    }
+    else{
+      searchNewBooks(searchTerm).then(results => {
+          setResults(results.data);
+          setShowModal(true);
+          }
+      );
+    }
   };
+
+ 
+
 
   const logout = () => {
     dispatch({ type: "SET_LOGIN_SUCCESS", payload: false });
@@ -54,8 +82,8 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="/dashboard/addnewstudent">users</Nav.Link>
+            
+            <Nav.Link href="/dashboard/addnewstudent">Add Student</Nav.Link>
             <Nav.Link href="/rentedbooks">Rented Books</Nav.Link>
             <Nav.Link href="/dashboard/addbook">Add Book</Nav.Link>
             <Nav.Link href="/updatebook">Update Book</Nav.Link>

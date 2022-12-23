@@ -194,8 +194,32 @@ app.post("/dashboard/addnewstudent", (req, res) => {
 });
 
 
-
-
+// borrow_id,  user_id, book_id, borrow_date, due_date, return_date   
+//
+app.post("/dashboard/issuebook", (req, res) => {
+  const {
+    user_id,
+    book_id,  
+    borrow_date,
+    due_date,
+    return_date,
+  } = req.body; 
+  pool.query(
+    "INSERT INTO borrowed_books (user_id, book_id, borrow_date, due_date, return_date) VALUES (?)",
+    [user_id, book_id, borrow_date, due_date, return_date],
+    (error, results) => {
+      if (error) {
+        
+        console.error(error);
+        // Send a response with a 500 status code to indicate an internal server error
+        res.status(500).send("Failed to add borrow");
+      } else {
+        // Send a response with a 201 status code to indicate that the student was successfully added
+        res.status(201).send(`Borrow added with ID: ${results.user_id}`);
+      }
+    }
+  );
+});
 
 
 

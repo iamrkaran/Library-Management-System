@@ -83,3 +83,22 @@ export const addNewStudent = (
     library_card_number,
   });
 };
+
+// borrow_id, user_id, book_id, borrow_date, due_date, return_date
+
+export const IssueBook = (
+  user_id,
+  book_id,
+  borrow_date, 
+  due_date,
+  return_date
+) => {
+  return axios.post(`${baseUrl}/dashboard/issuebook`, {
+    user_id,
+    book_id,
+    borrow_date,
+    due_date,
+    return_date,
+  });
+};
+
