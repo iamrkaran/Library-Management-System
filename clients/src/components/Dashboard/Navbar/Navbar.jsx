@@ -85,8 +85,9 @@ function CollapsibleExample() {
             
             <Nav.Link href="/dashboard/addnewstudent">Add Student</Nav.Link>
             <Nav.Link href="/rentedbooks">Rented Books</Nav.Link>
-            <Nav.Link href="/dashboard/addbook">Add Book</Nav.Link>
+            <Nav.Link href="/dashboard/addbook">Add New Book</Nav.Link>
             <Nav.Link href="/updatebook">Update Book</Nav.Link>
+            <Nav.Link href="/dashboard/student">Students</Nav.Link>
           </Nav>
           <Nav>
             <Form className="d-flex p-2">

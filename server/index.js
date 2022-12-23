@@ -217,6 +217,16 @@ app.post("/dashboard/issuebook", (req, res) => {
     }
   );
 });
+
+app.get("/student", (req, res) => {
+  pool.query("SELECT * FROM student", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.send(results);
+  });
+});
+
  
 
 

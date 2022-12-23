@@ -102,3 +102,7 @@ export const IssueBook = (
   });
 };
 
+
+export const getStudents = () => {
+  return axios.get(`${baseUrl}/student`);
+};
