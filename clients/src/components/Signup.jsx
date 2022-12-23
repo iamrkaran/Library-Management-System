@@ -26,7 +26,7 @@ function signupForm() {
         if (response.status === 201) {
           console.log("signup success");
           dispatch({ type: "SET_SIGNUP_SUCCESS", payload: true });
-          navigate("/login");
+          navigate("/"); // signup fixed
         } else {
           console.log(response.message);
           dispatch({ type: "SET_ERROR_MESSAGE", payload: response.message });
