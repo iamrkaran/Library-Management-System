@@ -1,4 +1,4 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button , Alert } from "react-bootstrap";
 import { createBook } from "../api";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -186,8 +186,14 @@ const AddBookForm = () => {
         </Button>
         </div>
       
-      {success ?? <p>Book added successfully</p>}
     </Form>
+    <div>
+      {success && (
+        <Alert variant="success" className="mt-3">
+          Book added successfully!
+        </Alert>
+      )}
+    </div>
    
       </div>
   );

@@ -137,7 +137,7 @@ function signupForm() {
           <p>
             
             Already have an account?{" "}
-            <Link to="/login">Login</Link>{" "}
+            <Link to="/">Login</Link>{" "}
             <span>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
               &nbsp; 

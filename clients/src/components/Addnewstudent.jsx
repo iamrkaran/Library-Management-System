@@ -43,7 +43,7 @@ const handleSubmit = async event => {
     <Container>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Student Id</Form.Label>
           <Form.Control
             type="text"
             value={studentData.student_id}

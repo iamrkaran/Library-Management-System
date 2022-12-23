@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button  } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { login } from "../api";
 import Dashboard from "./AdminDashbord";
@@ -31,6 +31,7 @@ function LoginForm() {
           localStorage.setItem("isLoggedIn", "true");
 
           navigate("/dashboard");
+          window.location.reload();
         }
       })
       .catch((error) => {
