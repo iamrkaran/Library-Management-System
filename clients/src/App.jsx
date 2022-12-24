@@ -3,10 +3,9 @@ import Login from "./components/login";
 import Signup from "./components/Signup";
 import { Routes , Route } from "react-router-dom";
 import Home from "./components/Home.jsx";
-import AdminDashbord from "./components/AdminDashbord";
 import Addbook from "./components/Addbook";
 import Updatebook from "./components/Updatebook";
-import Issuedbooks from "./components/issuedbooks";
+import Issuedbooks from "./components/Issuedbooks";
 import AddStudentdata from "./components/Addnewstudent";
 import Students from "./components/Students";
 
