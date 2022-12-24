@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000";
+// const baseUrl = "http://localhost:3000";
+const baseUrl = "https://fine-tan-tadpole-yoke.cyclic.app/";
 
 export const login = (email, password) => {
   return axios.post(`${baseUrl}/login`, { email, password });
