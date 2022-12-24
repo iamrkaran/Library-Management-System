@@ -10,6 +10,7 @@ import {
   Form,
   FormGroup,
   Container,
+  Table,
 } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
@@ -22,10 +23,20 @@ import { getBooks, IssueBook } from "../../../api";
 const Home = () => {
   const [sample, setSample] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [viewDetails, setViewDetails] = useState(false);
 
   const [formdata, setFormData] = useState({
     user_id: "",
     book_id: "",
+  });
+
+  const [viewdata, setViewData] = useState({
+    title: "",
+    author_id: "",
+    publisher_id: "",
+    isbn: "",
+    publication_year: "",
+    availability: "0",
   });
 
   console.log("formdata" + formdata);
@@ -53,17 +64,17 @@ const Home = () => {
 
     const borrow_date = formattedBorrowDate;
     const due_date = formattedDueDate;
-    const return_date = null; 
+    const return_date = null;
 
     IssueBook(user_id, book_id, borrow_date, due_date, return_date)
-    .then((res) => {
-      console.log(res);
-      setShowModal(false);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+      .then((res) => {
+        console.log(res);
+        setShowModal(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="home">
@@ -87,13 +98,23 @@ const Home = () => {
 
                   <Row className="d-flex justify-content-between">
                     <Col>
-                      <Link
-                        to="/updatebook"
-                        onClick={() => <Updatebook value={item} />}
-                        className="btn btn-primary"
+                      <Button
+                        variant="primary"
+                        onClick={() => {
+                          setViewData({
+                            book_id: item.book_id,
+                            title: item.title,
+                            author_id: item.author_id,
+                            publisher_id: item.publisher_id,
+                            isbn: item.isbn,
+                            publication_year: item.publication_year,
+                            availability: item.availability,
+                          });
+                          setViewDetails(true);
+                        }}
                       >
                         View Details
-                      </Link>
+                      </Button>
                     </Col>
                     <Col>
                       <Button
@@ -113,6 +134,50 @@ const Home = () => {
           ))}
         </div>
       </div>
+
+      <Modal
+        size="lg"
+        show={viewDetails}
+        onHide={() => setViewDetails(false)}
+        aria-labelledby="example-modal-sizes-title-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-modal-sizes-title-lg">
+            Book Details
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table bordered>
+            <thead>
+              <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author ID</th>
+                <th>Publisher ID</th>
+                <th>ISBN</th>
+                <th>Publication Year</th>
+                <th>Availability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{viewdata.book_id}</td>
+                <td>{viewdata.title}</td>
+                <td>{viewdata.author_id}</td>
+                <td>{viewdata.publisher_id}</td>
+                <td>{viewdata.isbn}</td>
+                <td>{viewdata.publication_year}</td>
+                <td>
+                  {viewdata.availability == 1 ? "Available" : "Not Available"}
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+
+        </Modal.Body>
+
+      </Modal>
+
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Issue Book Form</Modal.Title>
