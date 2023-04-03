@@ -108,7 +108,7 @@ const handleSubmit = async event => {
       
         <div className="d-grid gap-2 mt-5">
           <Button variant="danger" size="md"
-          onClick={() => navigate('/admin')}
+          onClick={() => navigate('/')}
           >
           Cancel
           </Button>

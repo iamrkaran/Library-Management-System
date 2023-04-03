@@ -42,7 +42,7 @@ const Updatebookfrom = () => {
   const handleDelete = (isbn) => {
     deleteBook(isbn).then((res) => {
       console.log(res);
-      window.location = "/dashboard";
+      navigate("/");
     });
   };
 
@@ -95,7 +95,7 @@ const Updatebookfrom = () => {
       uavailability
     ).then((res) => {
       console.log(res);
-      window.location = "/dashboard";
+      navigate("/");
     });
   };
 

@@ -205,7 +205,7 @@ if (error) {
         </div>
       <div className="d-grid gap-2 mt-5">
         <Button variant="danger" 
-        onClick={() => navigate("/admin")}
+        onClick={() => navigate("/")}
         >
         Cancel
         </Button>

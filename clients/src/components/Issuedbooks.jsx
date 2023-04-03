@@ -45,7 +45,7 @@ function Issuedbooks() {
 </Table>
 
         <Row className="mt-3">
-          <Button className="btn btn-block btn-primary" as={Link} to="/admin">
+          <Button className="btn btn-block btn-primary" as={Link} to="/">
             Back
           </Button>
         </Row>

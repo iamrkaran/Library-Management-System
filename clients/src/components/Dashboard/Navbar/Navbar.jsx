@@ -19,6 +19,7 @@ import { searchNewBooks} from "../../../api";
 
 import "./navbar.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function CollapsibleExample() {
   const dispatch = useDispatch();
@@ -82,12 +83,25 @@ function CollapsibleExample() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            
-            <Nav.Link href="/addnewstudent">Add Student</Nav.Link>
+
+          {/* <Nav.Link href="/addnewstudent">Add Student</Nav.Link>
             <Nav.Link href="/rentedbooks">Rented Books</Nav.Link>
             <Nav.Link href="/addbook">Add New Book</Nav.Link>
             <Nav.Link href="/updatebook">Update Book</Nav.Link>
-            <Nav.Link href="/student">Students</Nav.Link>
+            <Nav.Link href="/student">Students</Nav.Link> */}
+            <NavDropdown title="Student" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/addnewstudent">Add Student</NavDropdown.Item>
+              <NavDropdown.Item href="/student">Students</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Books" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/addbook">Add New Book</NavDropdown.Item>
+              <NavDropdown.Item href="/updatebook">Update Book</NavDropdown.Item>
+              <NavDropdown.Item href="/rentedbooks">Rented Books</NavDropdown.Item>
+            </NavDropdown>
+
+            
+             
+           
           </Nav>
           <Nav>
             <Form className="d-flex p-2">

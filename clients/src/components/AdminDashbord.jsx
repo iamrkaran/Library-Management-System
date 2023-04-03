@@ -20,13 +20,7 @@ const AdminDashbord = () => {
           <Home />
           <Footer />
 
-          {/* <button onClick={() => dispatch(logout())}>Logout</button> */}
-
-          {/* <button onClick={() => navigate("/login")}>Login</button> */}
-
-          {/* <button onClick={() => navigate("/signup")}>Signup</button> */}
-
-          {/* <button onClick={() => navigate("/addbook")}>Addbook</button> */}
+         
           </div>
       ) : (
         <Login />
