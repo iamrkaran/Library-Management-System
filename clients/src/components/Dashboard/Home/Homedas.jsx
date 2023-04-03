@@ -82,7 +82,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="container bg-dark">
+      <div className="m-4">
         <div className="row">
           {sample.map((item) => (
             <div className="col-md-4" key={item.book_id}>

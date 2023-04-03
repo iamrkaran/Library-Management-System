@@ -18,7 +18,7 @@ const Students = () => {
                 setError(err);
             });
     }, []);
-    // student_id`, `name`, `email`, `enrollment_status`, `library_card_number
+    
  
   return (
     <div>

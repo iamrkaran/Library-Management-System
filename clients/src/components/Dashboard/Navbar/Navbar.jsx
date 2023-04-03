@@ -77,7 +77,7 @@ function CollapsibleExample() {
       bg="dark"
       variant="dark"
     >
-      <Container>
+      <div className="container-fluid m-4 ">
         <Navbar.Brand href="/dashboard">KNIT SULTANPUR</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -124,7 +124,7 @@ function CollapsibleExample() {
             )}
           </Nav>
         </Navbar.Collapse>
-      </Container>
+      </div>
     </Navbar>
     <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>

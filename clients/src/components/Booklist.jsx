@@ -12,7 +12,7 @@ function BookList() {
   }, []);
 
   return (
-    <div>
+    <div >
       {books.map(book => (
         <Card key={book.book_id}>
           <Card.Body>
