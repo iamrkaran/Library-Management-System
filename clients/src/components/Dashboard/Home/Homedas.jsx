@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import Updatebook from "../../Updatebook";
 
 import { getBooks, IssueBook } from "../../../api";
+import config from "../../../../config";
 
 const Home = () => {
   const [sample, setSample] = useState([]);
@@ -39,13 +40,16 @@ const Home = () => {
     availability: "0",
   });
 
+  const baseUrl = config().baseUrl;
+
   console.log("formdata" + formdata);
   useEffect(() => {
-    fetch("http://localhost:3000/books")
-      .then((res) => res.json())
-      .then((data) => {
-        setSample(data);
-        console.log(data);
+    getBooks()
+      .then((res) => {
+        setSample(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 

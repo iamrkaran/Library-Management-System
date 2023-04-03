@@ -1,7 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-// const baseUrl = "http://localhost:3000";
-const baseUrl = "https://fine-tan-tadpole-yoke.cyclic.app/";
+import config from '../config';
+
+const baseUrl = config().baseUrl;
 
 export const login = (email, password) => {
   return axios.post(`${baseUrl}/login`, { email, password });
@@ -15,7 +16,6 @@ export const getBooks = () => {
   return axios.get(`${baseUrl}/books`);
 };
 
-// const { title, authorId, publisherId, isbn, publication_year } = fromdata;
 export const createBook = (
   title,
   author_id,
@@ -43,7 +43,7 @@ export const updateBook = (
   publication_year,
   availability
 ) => {
-  return axios.put(`${baseUrl}/updatebook/:${id}`, {
+  return axios.put(`${baseUrl}/updatebook/${id}`, {
     id,
     isbn,
     title,
@@ -67,8 +67,6 @@ export const searchNewBooks = (id) => {
   return axios.get(endpoint);
 };
 
-
-
 export const addNewStudent = (
   student_id,
   name,
@@ -85,8 +83,6 @@ export const addNewStudent = (
   });
 };
 
-// borrow_id, user_id, book_id, borrow_date, due_date, return_date
-
 export const IssueBook = (
   user_id,
   book_id,
@@ -102,7 +98,6 @@ export const IssueBook = (
     return_date,
   });
 };
-
 
 export const getStudents = () => {
   return axios.get(`${baseUrl}/student`);
