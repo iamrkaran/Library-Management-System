@@ -28,7 +28,7 @@ function LoginForm() {
         if (response.status === 200) {
           console.log("login success");
           dispatch(login(response.data)); // dispatch the login action from the authSlice
-          navigate("/admin");
+          navigate("/");
           
         }
       })

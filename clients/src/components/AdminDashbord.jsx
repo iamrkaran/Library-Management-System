@@ -7,6 +7,10 @@ import Navbar from "./Dashboard/Navbar/Navbar";
 import Login from "./login";
 
 const AdminDashbord = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <div>
@@ -15,12 +19,17 @@ const AdminDashbord = () => {
           <Navbar />
           <Home />
           <Footer />
-        </div>
+
+          {/* <button onClick={() => dispatch(logout())}>Logout</button> */}
+
+          {/* <button onClick={() => navigate("/login")}>Login</button> */}
+
+          {/* <button onClick={() => navigate("/signup")}>Signup</button> */}
+
+          {/* <button onClick={() => navigate("/addbook")}>Addbook</button> */}
+          </div>
       ) : (
-        <div>
-          {" "}
-          <Login/>{" "}
-        </div>
+        <Login />
       )}
     </div>
   );
