@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Login from './components/login';
 import Signup from './components/Signup';
-// import Home from './components/Home';
+
 import Addbook from './components/Addbook';
 import Updatebook from './components/Updatebook';
 import Issuedbooks from './components/Issuedbooks';
@@ -17,14 +17,14 @@ import AdminDashbord from './components/AdminDashbord';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<AdminDashbord />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/addbook" element={<Addbook />} />
-      <Route path="/updatebook" element={<Updatebook />} />
-      <Route path="/rentedbooks" element={<Issuedbooks />} />
-      <Route path="/addnewstudent" element={<AddStudentdata />} />
-      <Route path="/student" element={<Students />} />
+      <Route path="/" exac element={<AdminDashbord />} />
+      <Route path="/login" exac element={<Login />} />
+      <Route path="/signup" exac element={<Signup />} />
+      <Route path="/addbook" exac element={<Addbook />} />
+      <Route path="/updatebook" exac element={<Updatebook />} />
+      <Route path="/rentedbooks" exac element={<Issuedbooks />} />
+      <Route path="/addnewstudent" exac element={<AddStudentdata />} />
+      <Route path="/student" exac element={<Students />} />
     </Routes>
   );
 }
