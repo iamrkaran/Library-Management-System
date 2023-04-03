@@ -78,16 +78,16 @@ function CollapsibleExample() {
       variant="dark"
     >
       <div className="container-fluid m-4 ">
-        <Navbar.Brand href="/dashboard">KNIT SULTANPUR</Navbar.Brand>
+        <Navbar.Brand href="/admin">KNIT SULTANPUR</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             
-            <Nav.Link href="/dashboard/addnewstudent">Add Student</Nav.Link>
+            <Nav.Link href="/addnewstudent">Add Student</Nav.Link>
             <Nav.Link href="/rentedbooks">Rented Books</Nav.Link>
-            <Nav.Link href="/dashboard/addbook">Add New Book</Nav.Link>
+            <Nav.Link href="/addbook">Add New Book</Nav.Link>
             <Nav.Link href="/updatebook">Update Book</Nav.Link>
-            <Nav.Link href="/dashboard/student">Students</Nav.Link>
+            <Nav.Link href="/student">Students</Nav.Link>
           </Nav>
           <Nav>
             <Form className="d-flex p-2">

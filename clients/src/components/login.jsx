@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Form, Button  } from "react-bootstrap";
-import { Link } from 'react-router-dom';
-import { login } from "../api";
+import { Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { login as apiLogin } from "../api"; // Rename the imported function here
 import Dashboard from "./AdminDashbord";
+import { login, logout } from "../features/authSlice";
 
 import "./style.global.css";
+
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -21,23 +23,20 @@ function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(formState.email, formState.password)
+    apiLogin(formState.email, formState.password) // Change this line to use apiLogin
       .then((response) => {
         if (response.status === 200) {
           console.log("login success");
-          dispatch({ type: "SET_LOGIN_SUCCESS", payload: true });
-          dispatch({ type: "isLoggedIn", payload: true });
-
-          localStorage.setItem("isLoggedIn", "true");
-
-          navigate("/dashboard");
-          window.location.reload();
+          dispatch(login(response.data)); // dispatch the login action from the authSlice
+          navigate("/admin");
+          
         }
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  
 
   return (
     <div className="login">
