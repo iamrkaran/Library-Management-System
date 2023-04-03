@@ -79,7 +79,7 @@ function CollapsibleExample() {
       variant="dark"
     >
       <div className="container-fluid m-4 ">
-        <Navbar.Brand href="/admin">KNIT SULTANPUR</Navbar.Brand>
+        <Navbar.Brand href="/">KNIT SULTANPUR</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -99,7 +99,7 @@ function CollapsibleExample() {
               <NavDropdown.Item href="/rentedbooks">Rented Books</NavDropdown.Item>
             </NavDropdown>
 
-            
+
              
            
           </Nav>
