@@ -8,14 +8,13 @@ import {
   Modal,
   Row,
   Col,
-  
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 import SearchComponent from "../../SearchComponent";
 
-import { searchNewBooks} from "../../../api";
+import { searchNewBooks } from "../../../api";
 
 import "./navbar.css";
 import { useEffect } from "react";
@@ -42,7 +41,7 @@ function CollapsibleExample() {
     }
     return true;
   };
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const isValid = validatesearch(searchTerm);
 
@@ -50,19 +49,13 @@ function CollapsibleExample() {
       alert("Please Enter a valid search id");
       return;
       setError("Please Enter a valid search id");
-     
-    }
-    else{
-      searchNewBooks(searchTerm).then(results => {
-          setResults(results.data);
-          setShowModal(true);
-          }
-      );
+    } else {
+      searchNewBooks(searchTerm).then((results) => {
+        setResults(results.data);
+        setShowModal(true);
+      });
     }
   };
-
- 
-
 
   const logout = () => {
     dispatch({ type: "SET_LOGIN_SUCCESS", payload: false });
@@ -71,76 +64,81 @@ function CollapsibleExample() {
   };
   return (
     <>
-    <Navbar
-      className="navbar"
-      collapseOnSelect
-      expand="lg"
-      bg="dark"
-      variant="dark"
-    >
-      <div className="container-fluid m-4 ">
-        <Navbar.Brand href="/">KNIT SULTANPUR</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-
-         
-            <NavDropdown title="Student" id="collasible-nav-dropdown">
-            <NavDropdown.Item>
-  <Link to="/addnewstudent">Add New Student</Link>
-</NavDropdown.Item>
-
-            </NavDropdown>
-
-
-             
-           
-          </Nav>
-          <Nav>
-            <Form className="d-flex p-2">
-              <Form.Control
-                type="search"
-                placeholder="Search" 
-                aria-label="Search"
-                onChange={(e) => {
-                  setSearchTerm(e.target.value);
-                }}
-
-              />
-              <Button   variant="outline-success" onClick={handleSubmit}
-              >Search</Button>
-            </Form>
-          </Nav>
-          <Nav>
-            {isLoggedIn ? (
-              <Button
-                className="me-5"
-                variant="outline-danger"
-                onClick={logout}
-              >
-                Log Out
-              </Button>
-            ) : (
-              <Button
-                className="me-5"
-                variant="outline-success"
-                href="/login"
-              >
-                Sign In
-              </Button>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </div>
-    </Navbar>
-    <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Navbar
+        className="navbar"
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+      >
+        <div className="container-fluid m-4 ">
+          <Navbar.Brand href="/">KNIT SULTANPUR</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <NavDropdown title="Student" id="collasible-nav-dropdown">
+                <NavDropdown.Item>
+                  <Link to="/addnewstudent">Add New Student</Link>
+                  <Link to="/student">Student List</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Books" id="collasible-nav-dropdown">
+                <NavDropdown.Item>
+                  <Link to="/addbook">Add New Book</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/updatebook">Update Book</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/rentedbooks">Rented Books</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Form className="d-flex p-2">
+                <Form.Control
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                  }}
+                />
+                <Button variant="outline-success" onClick={handleSubmit}>
+                  Search
+                </Button>
+              </Form>
+            </Nav>
+            <Nav>
+              {isLoggedIn ? (
+                <Button
+                  className="me-5"
+                  variant="outline-danger"
+                  onClick={logout}
+                >
+                  Log Out
+                </Button>
+              ) : (
+                <Button
+                  className="me-5"
+                  variant="outline-success"
+                  href="/login"
+                >
+                  Sign In
+                </Button>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </div>
+      </Navbar>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Search Results</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {results.length > 0 ? (
             <ul>
-              {results.map(result => (
+              {results.map((result) => (
                 <li key={result.id}>{result.title}</li>
               ))}
             </ul>
