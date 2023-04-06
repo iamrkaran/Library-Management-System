@@ -105,8 +105,8 @@ const Updatebookfrom = () => {
         <div className="container bg-dark">
           <div className="row">
             {data.map((item) => (
-              <div className="col-md-4">
-                <div className="card">
+              <div className="col-md-4" key={item.book_id}>
+                <div className="card" >
                   <div className="card-body">
                     <h5 className="card-title" key={item.book_id}>
                       {item.book_id}
