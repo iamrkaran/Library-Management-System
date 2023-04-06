@@ -81,7 +81,7 @@ function CollapsibleExample() {
     <Link className="nav-link text-dark" to="/addnewstudent">Add New Student</Link>
   </NavDropdown.Item>
   <NavDropdown.Item className="bg-light">
-    <Link className="nav-link text-dark" to="/updatestudent">Update Student</Link>
+    <Link className="nav-link text-dark" to="/student">Student Lists</Link>
   </NavDropdown.Item>
 </NavDropdown>
 <NavDropdown title="Books" id="collasible-nav-dropdown" className=" text-white">
