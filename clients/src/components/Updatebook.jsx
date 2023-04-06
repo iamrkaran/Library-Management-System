@@ -152,7 +152,7 @@ const Updatebookfrom = () => {
 
                       <div className="d-grid gap-2 mt-3">
                         <Button variant="success" 
-                        onClick={() => navigate("/dashboard")}
+                        onClick={() => navigate("/")}
                         >
                             Back to Dashboard
                           
