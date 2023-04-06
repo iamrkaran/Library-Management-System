@@ -76,23 +76,26 @@ function CollapsibleExample() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <NavDropdown title="Student" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/addnewstudent">Add New Student</Link>
-                  <Link to="/student">Student List</Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Books" id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/addbook">Add New Book</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/updatebook">Update Book</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/rentedbooks">Rented Books</Link>
-                </NavDropdown.Item>
-              </NavDropdown>
+            <NavDropdown title="Student" id="collasible-nav-dropdown" className="  text-white">
+  <NavDropdown.Item className="bg-light">
+    <Link className="nav-link text-dark" to="/addnewstudent">Add New Student</Link>
+  </NavDropdown.Item>
+  <NavDropdown.Item className="bg-light">
+    <Link className="nav-link text-dark" to="/updatestudent">Update Student</Link>
+  </NavDropdown.Item>
+</NavDropdown>
+<NavDropdown title="Books" id="collasible-nav-dropdown" className=" text-white">
+  <NavDropdown.Item className="bg-light">
+    <Link className="nav-link text-dark" to="/addbook">Add New Book</Link>
+  </NavDropdown.Item>
+  <NavDropdown.Item className="bg-light">
+    <Link className="nav-link text-dark" to="/updatebook">Update Book</Link>
+  </NavDropdown.Item>
+  <NavDropdown.Item className="bg-light">
+    <Link className="nav-link text-dark" to="/rentedbooks">Rented Books</Link>
+  </NavDropdown.Item>
+</NavDropdown>
+
             </Nav>
             <Nav>
               <Form className="d-flex p-2">
