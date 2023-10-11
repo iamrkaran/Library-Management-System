@@ -42,7 +42,6 @@ const Home = () => {
 
   const baseUrl = config().baseUrl;
 
-  console.log("formdata" + formdata);
   useEffect(() => {
     getBooks()
       .then((res) => {
@@ -72,7 +71,6 @@ const Home = () => {
 
     IssueBook(user_id, book_id, borrow_date, due_date, return_date)
       .then((res) => {
-        console.log(res);
         setShowModal(false);
       })
       .catch((err) => {
@@ -88,17 +86,18 @@ const Home = () => {
             <div className="col-md-4" key={item.book_id}>
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">Book id :-- {item.book_id}</h5>
-                  <h5 className="card-title">{item.title}</h5>
+                  <h5 className="card-title">Name :{item.title}</h5>
+                  <h5 className="card-title">Book id :{item.book_id}</h5>
                   <p className="card-text">{item.author}</p>
-                  <p className="card-text">{item.isbn}</p>
+                  <p className="card-text">ISBN :{item.isbn}</p>
                   <p className="card-text">{item.edition}</p>
                   <p className="card-text">{item.dimensions}</p>
                   <p className="card-text">{item.publisher}</p>
                   <p className="card-text">{item.year}</p>
                   <p className="card-text">
-                    {item.availability == 1 ? "Available" : "Not Available"}
+                    {item.availability === 1 ? `Available: ${item.availability}` : "Not Available"}
                   </p>
+
 
                   <Row className="d-flex justify-content-between">
                     <Col>

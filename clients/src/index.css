@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #383838;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(63,103,217,1) 0%, rgba(67,209,222,1) 100.3% );
   width: 100%;
   height: 100%;
 

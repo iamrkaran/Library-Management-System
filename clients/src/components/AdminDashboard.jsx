@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Home from "./Dashboard/Home/Homedas";
 import Footer from "./Dashboard/Footer/Footer";
 import Navbar from "./Dashboard/Navbar/Navbar";
-import Login from "./login";
+import Login from "./Login";
 
 const AdminDashbord = () => {
   const dispatch = useDispatch();
@@ -18,9 +18,7 @@ const AdminDashbord = () => {
         <div>
           <Navbar />
           <Home />
-          <Footer />
-
-         
+          <Footer />       
           </div>
       ) : (
         <Login />

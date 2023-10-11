@@ -1,6 +1,8 @@
-import { Card, ListGroup } from 'react-bootstrap';
+import { Card, Container, ListGroup } from 'react-bootstrap';
 import React, { useState , useEffect } from 'react';
 import { getBooks } from '../api';
+import Navbar from './Dashboard/Navbar/Navbar';
+import Footer from './Dashboard/Footer/Footer';
 
 function BookList() {
   const [books, setBooks] = useState([]);
@@ -12,7 +14,10 @@ function BookList() {
   }, []);
 
   return (
-    <div >
+    <>
+    <Navbar />
+    <Container className="p-4">
+
       {books.map(book => (
         <Card key={book.book_id}>
           <Card.Body>
@@ -24,7 +29,9 @@ function BookList() {
           </Card.Body>
         </Card>
       ))}
-    </div>
+    </Container>
+    <Footer />
+    </>
   );
 }
 

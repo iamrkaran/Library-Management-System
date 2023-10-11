@@ -8,12 +8,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  pool.query("SELECT * FROM users", (error, results) => {
-    if (error) {
-      throw error;
-    }
-    res.send(results);
-  });
+  res.send("Welcome to the Knit LMS API!");
 });
 
 app.post("/login", (req, res) => {
@@ -35,7 +30,6 @@ app.post("/login", (req, res) => {
           throw error;
         }
         if (result) {
-          // Set session or token
           res.send({ message: "Logged in successfully" });
         } else {
           res.status(401).send({ message: "Incorrect email or password" });
@@ -167,7 +161,8 @@ app.get("/rentedbooks", (req, res) => {
     res.send(results);
   });
 });
-// INSERT INTO `student`(`student_id`, `name`, `email`, `enrollment_status`, `library_card_number`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])
+
+
 app.post("/dashboard/addnewstudent", (req, res) => {
   const {
     student_id,
@@ -176,17 +171,17 @@ app.post("/dashboard/addnewstudent", (req, res) => {
     enrollment_status,
     library_card_number,
   } = req.body;
+
+  const values = [student_id, name, email, enrollment_status, library_card_number];
+
   pool.query(
-    "INSERT INTO student (student_id,name, email, enrollment_status, library_card_number) VALUES (?)",
-    [student_id,name, email, enrollment_status, library_card_number],
+    "INSERT INTO student (student_id, name, email, enrollment_status, library_card_number) VALUES (?, ?, ?, ?, ?)",
+    values,
     (error, results) => {
       if (error) {
-        // Log the error
         console.error(error);
-        // Send a response with a 500 status code to indicate an internal server error
         res.status(500).send("Failed to add student");
       } else {
-        // Send a response with a 201 status code to indicate that the student was successfully added
         res.status(201).send(`Student added with ID: ${results.student_id}`);
       }
     }
@@ -194,8 +189,7 @@ app.post("/dashboard/addnewstudent", (req, res) => {
 });
 
 
-// borrow_id,  user_id, book_id, borrow_date, due_date, return_date   
-//
+
 app.post("/dashboard/issuebook", (req, res) => {
   const {
     user_id,

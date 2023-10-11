@@ -12,7 +12,9 @@ import { useNavigate } from "react-router-dom";
 
 import "./style.global.css";
 import { updateBook, getBooks, deleteBook } from "../api";
-
+import Navbar from './Dashboard/Navbar/Navbar';
+import Footer from './Dashboard/Footer/Footer';
+import { Container } from "react-bootstrap";
 const Updatebookfrom = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -101,76 +103,77 @@ const Updatebookfrom = () => {
 
   return (
     <>
-      <div className="home">
-        <div className="container bg-dark">
-          <div className="row">
-            {data.map((item) => (
-              <div className="col-md-4" key={item.book_id}>
-                <div className="card" >
-                  <div className="card-body">
-                    <h5 className="card-title" key={item.book_id}>
-                      {item.book_id}
-                    </h5>
-                    <h5 className="card-title">{item.title}</h5>
-                    <p className="card-text">{item.author}</p>
-                    <p className="card-text">{item.isbn}</p>
-                    <p className="card-text">{item.edition}</p>
-                    <p className="card-text">{item.dimensions}</p>
-                    <p className="card-text">{item.publisher}</p>
-                    <p className="card-text">{item.year}</p>
-                    <p className="card-text">{item.availability}</p>
-                  </div>
-                  <div className="d-grid gap-2 mt-3">
-                   
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        onClick={() =>
-                          handleUpdate(
-                            item.book_id,
-                            item.title,
-                            item.author_id,
-                            item.publisher_id,
-                            item.isbn,
-                            item.publication_year,
-                            item.availability
-                          )
-                        }
-                      >
-                        Update
-                      </Button>
-                      </div>
-                      <div className="d-grid gap-2 mt-3">
-                      <Button
-                        variant="danger"
-                        size="sm"
-                        onClick={() => handleDelete(item.isbn)}
-                      >
-                        Delete
-                      </Button>
-                      </div>
+      <Navbar />
+      <Container className="p-4">
 
-                      <div className="d-grid gap-2 mt-3">
-                        <Button variant="success" 
-                        onClick={() => navigate("/")}
-                        >
-                            Back to Dashboard
-                          
-                        </Button>
-                      </div>
-                      {success && (
-                        <div className="alert alert-success" role="alert">
-                          Book Deleted Successfully
-                        </div>
-                      )}
-                    
-              
+        <div className="row">
+          {data.map((item) => (
+            <div className="col-md-4" key={item.book_id}>
+              <div className="card" >
+                <div className="card-body">
+                  <h5 className="card-title" key={item.book_id}>
+                    {item.book_id}
+                  </h5>
+                  <h5 className="card-title">{item.title}</h5>
+                  <p className="card-text">{item.author}</p>
+                  <p className="card-text">{item.isbn}</p>
+                  <p className="card-text">{item.edition}</p>
+                  <p className="card-text">{item.dimensions}</p>
+                  <p className="card-text">{item.publisher}</p>
+                  <p className="card-text">{item.year}</p>
+                  <p className="card-text">{item.availability}</p>
                 </div>
+                <div className="d-grid gap-2 mt-3">
+
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() =>
+                      handleUpdate(
+                        item.book_id,
+                        item.title,
+                        item.author_id,
+                        item.publisher_id,
+                        item.isbn,
+                        item.publication_year,
+                        item.availability
+                      )
+                    }
+                  >
+                    Update
+                  </Button>
+                </div>
+                <div className="d-grid gap-2 mt-3">
+                  <Button
+                    variant="danger"
+                    size="sm"
+                    onClick={() => handleDelete(item.isbn)}
+                  >
+                    Delete
+                  </Button>
+                </div>
+
+                <div className="d-grid gap-2 mt-3">
+                  <Button variant="success"
+                    onClick={() => navigate("/")}
+                  >
+                    Back to Dashboard
+
+                  </Button>
+                </div>
+                {success && (
+                  <div className="alert alert-success" role="alert">
+                    Book Deleted Successfully
+                  </div>
+                )}
+
+
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </div>
+
+      </Container>
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
@@ -253,6 +256,7 @@ const Updatebookfrom = () => {
         </div>
         <Modal.Footer></Modal.Footer>
       </Modal>
+      <Footer />
     </>
   );
 };

@@ -1,7 +1,7 @@
 :root {
     --text-color: #fff;
-    --nav-background-color: #000;
-    --hover-color: #fff;
+    --nav-background-color: #f3ebeb;
+    --hover-color: #7305f1;
     --hover-background-color: gray;
     --nav-link-font-size: 1.2rem;
     --nav-link-font-weight: 500;

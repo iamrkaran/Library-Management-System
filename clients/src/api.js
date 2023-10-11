@@ -67,21 +67,10 @@ export const searchNewBooks = (id) => {
   return axios.get(endpoint);
 };
 
-export const addNewStudent = (
-  student_id,
-  name,
-  email,
-  enrollment_status,
-  library_card_number
-) => {
-  return axios.post(`${baseUrl}/dashboard/addnewstudent`, {
-    student_id,
-    name,
-    email,
-    enrollment_status,
-    library_card_number,
-  });
+export const addNewStudent = (studentData) => {
+  return axios.post(`${baseUrl}/dashboard/addnewstudent`, studentData);
 };
+
 
 export const IssueBook = (
   user_id,

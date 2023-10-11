@@ -20,7 +20,7 @@ import "./navbar.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function CollapsibleExample() {
+function NavbarNav() {
   const dispatch = useDispatch();
   const SET_LOGIN_SUCCESS = useSelector((state) => state.loginSuccess);
   const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -79,7 +79,7 @@ function CollapsibleExample() {
               <NavDropdown
                 title="Student"
                 id="collasible-nav-dropdown"
-                className="  text-white"
+                className="text-black"
               >
                 <NavDropdown.Item className="bg-light">
                   <Link className="nav-link text-dark" to="/addnewstudent">
@@ -95,7 +95,7 @@ function CollapsibleExample() {
               <NavDropdown
                 title="Books"
                 id="collasible-nav-dropdown"
-                className=" text-white"
+                className="text-gray"
               >
                 <NavDropdown.Item className="bg-light">
                   <Link className="nav-link text-dark" to="/addbook">
@@ -115,10 +115,10 @@ function CollapsibleExample() {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Form className="d-flex p-2">
+              <Form className="d-flex p-4">
                 <Form.Control
                   type="search"
-                  placeholder="Search"
+                  placeholder='Search for a book ID'
                   aria-label="Search"
                   onChange={(e) => {
                     setSearchTerm(e.target.value);
@@ -176,4 +176,4 @@ function CollapsibleExample() {
   );
 }
 
-export default CollapsibleExample;
+export default NavbarNav;

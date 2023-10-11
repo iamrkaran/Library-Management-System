@@ -4,7 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    color: teal;
+    color: rgb(6, 7, 7);
 }
 
 
@@ -14,34 +14,17 @@
 .navbar-nav{
     color: #fff;
 }
-.login{
-    width: 410px;
-    height: 410px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(86, 0, 247, 0.2);
-    
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.loginPage {
+    width: 100%;
+    height: 100vh;
+   
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.signup {
-    width: 500px;
-    height: 500px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(86, 0, 247, 0.2);
-    margin: 20 auto;
-    padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
 .signdowntext{
     display: flex;
     justify-content: space-between;
@@ -64,17 +47,5 @@
     box-shadow: 0 0 10px 0 rgba(86, 0, 247, 0.2);
 
 }
-.addbook {
-    width: 500px;
-    background: rgb(26, 26, 26);
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(86, 0, 247, 0.2);
-    margin: 20 auto;
-    padding: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
+
 
