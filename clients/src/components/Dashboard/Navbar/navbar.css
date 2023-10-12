@@ -1,52 +1,66 @@
 :root {
-    --text-color: #fff;
-    --nav-background-color: #f3ebeb;
-    --hover-color: #7305f1;
-    --hover-background-color: gray;
-    --nav-link-font-size: 1.2rem;
-    --nav-link-font-weight: 500;
-    --nav-link-letter-spacing: 1px;
-    --nav-link-padding: 5px;
-    --nav-link-margin: 20px;
-  }
+  --text-color: #fff;
+  --nav-background-color: #f3ebeb;
+  --hover-color: #7305f1;
+  --hover-background-color: gray;
+  --nav-link-font-size: 1.2rem;
+  --nav-link-font-weight: 500;
+  --nav-link-letter-spacing: 1px;
+  --nav-link-padding: 5px;
+  --nav-link-margin: 20px;
+}
+
+.navbar {
+  background-color: var(--nav-background-color);
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(255, 251, 251, 0.986);
+  z-index: 999;
+}
+
+.logo,
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: var(--nav-link-font-weight);
+  letter-spacing: var(--nav-link-letter-spacing);
+  padding: var(--nav-link-padding);
+  margin-left: var(--nav-link-margin);
+  margin-right: var(--nav-link-margin);
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.logo {
+  font-size: 3rem;
+  box-shadow: 8px 8px 15px 0px rgba(0,0,0,0.2);
+}
+
+.nav-link {
+  font-size: var(--nav-link-font-size);
+  border: 2px solid transparent;
+  box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.2);
+}
+
+.nav-link:hover {
+  color: var(--hover-color);
+  background-color: var(--hover-background-color);
+  box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.2);
+}
+
+/* #collasible-nav-dropdown{
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 0;
   
 
-  .navbar {
-    background-color: var(--nav-background-color);
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(255, 251, 251, 0.986);
-  }
-  
-  .logo,
-  .nav-link {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: var(--nav-link-font-weight);
-    letter-spacing: var(--nav-link-letter-spacing);
-    padding: var(--nav-link-padding);
-    margin-left: var(--nav-link-margin);
-    margin-right: var(--nav-link-margin);
-  }
-  
-  .logo {
-    font-size: 3rem;
-  }
-  
-  .nav-link {
-    font-size: var(--nav-link-font-size);
-    transition: background-color 0.3s, border-bottom 0.3s;
-  }
-  
-  .nav-link:hover {
-   
-    border-radius: 10px;
-    color: var(--hover-color);
-    background-color: var(--hover-background-color);
-    border-bottom: 2px solid var(--text-color);
-  }
-  
+  background-color: var(--nav-background-color);
+  box-shadow: 0 0 10px rgba(255, 251, 251, 0.986);
+} */
