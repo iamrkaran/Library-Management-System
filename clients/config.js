@@ -1,7 +1,7 @@
 const config = () => {
   return {
-    // baseUrl: "https://fine-tan-tadpole-yoke.cyclic.app",
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://fine-tan-tadpole-yoke.cyclic.app",
+    // baseUrl: "http://localhost:3000",
   };
 };
 
