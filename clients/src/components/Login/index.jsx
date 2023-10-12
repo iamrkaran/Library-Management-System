@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner, Alert } from "react-bootstrap";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { login as apiLogin } from "../../api";
@@ -22,17 +22,27 @@ function LoginForm() {
         password: "",
     });
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        setLoading(true);
+        setError(null);
 
         try {
             const response = await apiLogin(formState.email, formState.password);
             if (response.status === 200) {
                 dispatch(login(response.data));
                 navigate("/");
+            } else {
+                setError("Login failed. Please check your credentials.");
             }
         } catch (error) {
-            console.log(error);
+            setError("An error occurred while logging in. Please try again later.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -70,9 +80,19 @@ function LoginForm() {
                     </Form.Group>
                     <div className="d-grid gap-2 mt-5">
                         <Button variant="primary" type="submit">
-                            Log in
+                            {loading ? (
+                                <Spinner animation="border" size="sm" />
+                            ) : (
+                                "Log in"
+                            )}
                         </Button>
                     </div>
+
+                    {error && (
+                        <Alert variant="danger" className="mt-2">
+                            {error}
+                        </Alert>
+                    )}
 
                     <div className="mt-2">
                         <Container>
@@ -89,7 +109,6 @@ function LoginForm() {
                 </Form>
             </div>
         </div>
-
     );
 }
 

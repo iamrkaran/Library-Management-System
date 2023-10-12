@@ -182,7 +182,7 @@ app.post("/dashboard/addnewstudent", (req, res) => {
         console.error(error);
         res.status(500).send("Failed to add student");
       } else {
-        res.status(201).send(`Student added with ID: ${results.student_id}`);
+        res.status(201).send(`Student added`);
       }
     }
   );
