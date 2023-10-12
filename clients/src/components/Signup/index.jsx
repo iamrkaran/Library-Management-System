@@ -34,7 +34,7 @@ function SignupForm() {
                 });
                 navigate('/');
             } else {
-                // Show error toast
+               
                 toast.error(response.data.message, {
                     autoClose: 3000,
                 });

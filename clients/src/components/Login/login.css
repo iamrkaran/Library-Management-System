@@ -54,3 +54,10 @@
     }
   }
   
+
+  .pre {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    padding: 50px;
+    border-radius: 20px; 
+  }

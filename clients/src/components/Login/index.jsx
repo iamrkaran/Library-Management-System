@@ -50,6 +50,10 @@ function LoginForm() {
         <div className="login-page">
             <div className="login-header">
                 <h1>Library Management System</h1>
+                <div className="pre">
+                    <h5>Username:  sdkkjdsn@g.com</h5>
+                    <h5>Password:  12345678</h5>
+                </div>
             </div>
             <div className="login-header_mobile">
                 <h1>LMS</h1>
