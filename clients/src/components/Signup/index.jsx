@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { signup } from '../../api';
@@ -14,25 +14,35 @@ function SignupForm() {
         password: '',
     });
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleValidation = (event) => {
+    const handleValidation = async (event) => {
         event.preventDefault();
 
         if (!validateForm()) return;
 
-        const response = { status: 201, message: 'Signup successful' };
+        setLoading(true); // Show loading spinner
 
-        if (response.status === 201) {
-            // Show success toast
-            toast.success(response.message, {
-                autoClose: 3000,
-            });
-            navigate('/');
-        } else {
-            // Show error toast
-            toast.error(response.message, {
-                autoClose: 3000,
-            });
+        try {
+            const response = await signup(formState.name, formState.email, formState.password);
+
+            if (response.status === 201) {
+                // Show success toast
+                toast.success(response.data.message, {
+                    autoClose: 3000,
+                });
+                navigate('/');
+            } else {
+                // Show error toast
+                toast.error(response.data.message, {
+                    autoClose: 3000,
+                });
+            }
+        } catch (error) {
+            showError(error.response.data.message);
+        } finally {
+            setLoading(false); // Hide loading spinner
         }
     };
 
@@ -69,7 +79,6 @@ function SignupForm() {
     };
 
     return (
-
         <div className="signup-page">
             <div className="signup-header">
                 <h1>Library Management System</h1>
@@ -113,8 +122,12 @@ function SignupForm() {
                         />
                     </Form.Group>
                     <div className="d-grid gap-2 mt-5">
-                        <Button variant="primary" size="md" type="submit">
-                            Signup
+                        <Button variant="primary" size="md" type="submit" disabled={loading}>
+                            {loading ? (
+                                <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                            ) : (
+                                "Sign up"
+                            )}
                         </Button>
                     </div>
                 </Form>
